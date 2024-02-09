@@ -3,8 +3,7 @@ import UIKit
 class ImageCell: UICollectionViewCell {
     
     // MARK: - Outlets
-    
-    private let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let cellImage = UIImageView()
         cellImage.contentMode = .scaleAspectFill
         cellImage.clipsToBounds = true
@@ -36,6 +35,7 @@ class ImageCell: UICollectionViewCell {
         return imageView
     }()
     
+    // MARK: - Configuration
     func configure(with model: ImageCellModel) {
         titleLabel.text = model.title
 
@@ -49,10 +49,9 @@ class ImageCell: UICollectionViewCell {
     }
     
     // MARK: - Initialization
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
+        setupHierarchy()
     }
     
     required init?(coder: NSCoder) {
@@ -60,8 +59,7 @@ class ImageCell: UICollectionViewCell {
     }
     
     // MARK: - Setup
-    
-    private func setupViews() {
+    func setupHierarchy() {
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(countLabel)

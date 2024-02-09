@@ -22,6 +22,7 @@
 		B62494132B73B620009B9D9F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494122B73B620009B9D9F /* SearchViewController.swift */; };
 		B62494152B745C70009B9D9F /* ImageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494142B745C70009B9D9F /* ImageCellModel.swift */; };
 		B62494172B747717009B9D9F /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494162B747717009B9D9F /* CustomHeader.swift */; };
+		B624941A2B7580E6009B9D9F /* SharedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494192B7580E6009B9D9F /* SharedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		B62494122B73B620009B9D9F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B62494142B745C70009B9D9F /* ImageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellModel.swift; sourceTree = "<group>"; };
 		B62494162B747717009B9D9F /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
+		B62494192B7580E6009B9D9F /* SharedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				B62493D82B702522009B9D9F /* ImageCell.swift */,
+				B62494192B7580E6009B9D9F /* SharedCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B62493B42B700B59009B9D9F /* AlbumsViewController.swift in Sources */,
+				B624941A2B7580E6009B9D9F /* SharedCell.swift in Sources */,
 				B62494132B73B620009B9D9F /* SearchViewController.swift in Sources */,
 				B624940F2B73B49F009B9D9F /* LibraryViewController.swift in Sources */,
 				B62494152B745C70009B9D9F /* ImageCellModel.swift in Sources */,
