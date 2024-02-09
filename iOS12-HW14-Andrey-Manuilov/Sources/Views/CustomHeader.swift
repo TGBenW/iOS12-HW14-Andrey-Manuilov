@@ -4,9 +4,15 @@ import SnapKit
 class CustomHeaderView: UICollectionReusableView {
     static let identifier = "CustomHeaderView"
     
+    // MARK: - Outlets
+    private let separatorLine: UIView = {
+        let line = UIView()
+        line.backgroundColor = .systemGray
+        return line
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "My Albums"
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
@@ -19,10 +25,29 @@ class CustomHeaderView: UICollectionReusableView {
         return button
     }()
     
+    // MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubview(separatorLine)
         addSubview(titleLabel)
         addSubview(seeAllButton)
+
+        setupConstraints()
+
+        seeAllButton.addTarget(self, action: #selector(seeAllTapped), for: .touchUpInside)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Setup
+    private func setupConstraints() {
+        separatorLine.snp.makeConstraints { make in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(0.2)
+        }
+        
         titleLabel.snp.makeConstraints { make in
             make.left.equalToSuperview()
             make.centerY.equalToSuperview()
@@ -33,7 +58,12 @@ class CustomHeaderView: UICollectionReusableView {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    // MARK: - Actions
+    func setTitle(_ title: String) {
+        titleLabel.text = title
+    }
+
+    @objc func seeAllTapped() {
+        print("See All tapped in \(titleLabel.text ?? "Unknown") section")
     }
 }
