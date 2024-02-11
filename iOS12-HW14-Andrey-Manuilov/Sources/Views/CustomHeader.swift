@@ -61,9 +61,10 @@ class CustomHeaderView: UICollectionReusableView {
     // MARK: - Actions
     func setTitle(_ title: String) {
         titleLabel.text = title
+        seeAllButton.isHidden = !(title == "My Albums" || title == "Shared Albums") // See All button visible only for My and Shared Albums
     }
 
     @objc func seeAllTapped() {
-        print("See All tapped in \(titleLabel.text ?? "Unknown") section")
+        print("See All tapped in \(titleLabel.text ?? "Unknown") section") // console logs where See All button was tapped
     }
 }

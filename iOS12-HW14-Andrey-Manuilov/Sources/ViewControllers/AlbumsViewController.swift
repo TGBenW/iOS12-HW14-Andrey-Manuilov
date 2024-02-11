@@ -23,6 +23,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDelegate {
         collectionView.backgroundColor = .systemBackground
         collectionView.register(ImageCell.self, forCellWithReuseIdentifier: "ImageCell")
         collectionView.register(SharedCell.self, forCellWithReuseIdentifier: "SharedCell")
+        collectionView.register(PeoplePetsPlacesCell.self, forCellWithReuseIdentifier: "PlacesCell")
         collectionView.register(CustomHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomHeaderView.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -60,7 +61,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDelegate {
             make.width.equalTo(scrollView.frameLayoutGuide.snp.width)
             make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset(-20)
 //            make.height.equalTo(scrollView.frameLayoutGuide).offset(-20)
-            make.height.equalTo(800)
+            make.height.equalTo(1200)
             }
         
     }
@@ -82,12 +83,21 @@ extension AlbumsViewController: UICollectionViewDataSource {
         return sections[section].items.count    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellIdentifier = indexPath.section == 0 ? "ImageCell" : "SharedCell"
+        let cellIdentifier: String
+        if indexPath.section == 0 {
+            cellIdentifier = "ImageCell"
+        } else if indexPath.section == 1 {
+            cellIdentifier = "SharedCell"
+        } else {
+            cellIdentifier = "PlacesCell"
+        }
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? ImageCell else {
             fatalError("Cannot dequeue cell with identifier: \(cellIdentifier)")
         }
         let model = sections[indexPath.section].items[indexPath.item]
         cell.configure(with: model)
+                
         return cell
     }
     
@@ -103,70 +113,50 @@ extension AlbumsViewController: UICollectionViewDataSource {
         }
 }
 
-// EXTENSION
+// MARK: EXTENSION
 extension AlbumsViewController {
     private func createCompositionalLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
-            if sectionIndex == 0 {
-                return self.createMyAlbumsSection(using: layoutEnvironment)
-            } else {
-                return self.createSharedAlbumsSection(using: layoutEnvironment)
+        let layout = UICollectionViewCompositionalLayout { [weak self] (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+            guard let self = self else { return nil }
+                
+            switch sectionIndex {
+            case 0:
+                return self.createSection(using: layoutEnvironment, rows: 2, itemHeightMultiplier: 2.5, top: 0, leading: 20, bottom: 10, trailing: 20)
+            case 1:
+                return self.createSection(using: layoutEnvironment, rows: 1, itemHeightMultiplier: 1.25, top: 0, leading: 20, bottom: 10, trailing: 20)
+            case 2:
+                return self.createSection(using: layoutEnvironment, rows: 1, itemHeightMultiplier: 1.25, top: 0, leading: 20, bottom: 0, trailing: 20)
+            default:
+                fatalError("Unsupported section")
             }
         }
         return layout
     }
     
-    private func createMyAlbumsSection(using layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
+    private func createSection(using layoutEnvironment: NSCollectionLayoutEnvironment,
+                               rows: Int,
+                               itemHeightMultiplier: CGFloat,
+                               top: CGFloat,
+                               leading: CGFloat,
+                               bottom: CGFloat,
+                               trailing: CGFloat) -> NSCollectionLayoutSection {
         let contentWidth = layoutEnvironment.container.effectiveContentSize.width
-        let itemWidth = (contentWidth / 2) * 0.93 // 90% of half width for each item
-        let itemHeight = itemWidth * 2.5 // item height
-                        
-        let itemSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(itemWidth),
-            heightDimension: .absolute(itemHeight)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                        
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(itemWidth),
-            heightDimension: .absolute(itemHeight)
-        )
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 2) // group configuration
-        group.interItemSpacing = .fixed(0) // space between rows
-
-        let section = NSCollectionLayoutSection(group: group) // section configuration
-        section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 0)
-
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), // header configuration
-                                                heightDimension: .estimated(50))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
-                                                                elementKind: UICollectionView.elementKindSectionHeader,
-                                                                alignment: .top)
-        section.boundarySupplementaryItems = [header]
-
-        return section
-    }
-    
-    private func createSharedAlbumsSection(using layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
-        let contentWidth = layoutEnvironment.container.effectiveContentSize.width
-        let itemWidth = (contentWidth / 2) * 0.93
-        let itemHeight = itemWidth * 1.25
+        let itemWidth = contentWidth * 0.465 // width adjusted to align 2 items side by side on 93% of the screen width
+        let itemHeight = itemWidth * itemHeightMultiplier
 
         let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth), heightDimension: .absolute(itemHeight))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(itemWidth), heightDimension: .absolute(itemHeight))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.interItemSpacing = .fixed(0)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth), heightDimension: .absolute(itemHeight))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: rows) // group configuration
+        group.interItemSpacing = .fixed(0) // space between rows
 
-        let section = NSCollectionLayoutSection(group: group)
+        let section = NSCollectionLayoutSection(group: group) // section configuration
         section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: top, leading: leading, bottom: bottom, trailing: trailing)
 
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50))
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50)) // header configuration
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        
         section.boundarySupplementaryItems = [header]
 
         return section
