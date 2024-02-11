@@ -1,10 +1,5 @@
 import Foundation
 
-struct AlbumSection { // section model
-    let title: String
-    let items: [ImageCellModel]
-}
-
 
 struct SharedPerson { // for persons in Shared Albums to extend ImageCellModel
     let email: String
@@ -20,26 +15,41 @@ struct SharedPerson { // for persons in Shared Albums to extend ImageCellModel
     }
 }
 
+struct Place {
+    let latitude: Double
+    let longitude: Double
+    let zoomMeters: Double
+}
+
+struct PeoplePetImageName {
+    var imageName: [String]
+}
+
 struct ImageCellModel { // image cell model
     let imageName: String
     let title: String
     let count: Int
     var isFavorite: Bool
     var sharedWith: [SharedPerson] // array of  persons albums are shared with
+    var place: Place? // optional places data for a map cell
+    var peoplePetImageName: PeoplePetImageName? // optional people/pet image data for a People&Pet cell
     
-    init(title: String, count: Int, imageName: String = "placeholder_img", isFavorite: Bool = false, sharedWith: [SharedPerson] = [sharedPerson3]) {
+    init(title: String = "Album name",
+         count: Int = 123,
+         imageName: String = "placeholder_img",
+         isFavorite: Bool = false,
+         sharedWith: [SharedPerson] = [],
+         place: Place? = nil,
+         peoplePetImageName: PeoplePetImageName? = nil) {
         self.title = title
         self.count = count
         self.imageName = imageName
         self.isFavorite = isFavorite
         self.sharedWith = sharedWith
+        self.place = place
+        self.peoplePetImageName = peoplePetImageName
     }
 }
-
-let sections = [
-    AlbumSection(title: "My Albums", items: myAlbumsContent),
-    AlbumSection(title: "Shared Albums", items: sharedAlbumsContent)
-]
 
 let myAlbumsContent: [ImageCellModel] = [
     ImageCellModel(title: "Album 1", count: 1120),
@@ -58,11 +68,26 @@ let sharedPerson1 = SharedPerson(email: "person1@example.com", name: "Alice", su
 let sharedPerson2 = SharedPerson(email: "person2@example.com", name: "Bob", surname: "Smith")
 let sharedPerson3 = SharedPerson(email: "person3@example.com", name: "Carol", surname: "Taylor", imageName: "carolImage")
 let sharedPerson4 = SharedPerson(email: "person4@example.com", name: "Dave", surname: "Brown")
+let sharedPerson5 = SharedPerson(email: "person5@example.com", name: "Eston", surname: "Diggory", imageName: "estonImage")
+let sharedPerson6 = SharedPerson(email: "person6@example.com", name: "Filly", surname: "Jennings", imageName: "fillyImage")
 
 let sharedAlbumsContent: [ImageCellModel] = [
     ImageCellModel(title: "Shared Album 1", count: 1120, sharedWith: [sharedPerson1, sharedPerson2]),
     ImageCellModel(title: "Shared Album 2", count: 3495, sharedWith: [sharedPerson3]),
     ImageCellModel(title: "Shared Album 3", count: 78, sharedWith: [sharedPerson4]),
-    ImageCellModel(title: "Shared Album 4", count: 45110, sharedWith: [sharedPerson2, sharedPerson4, sharedPerson1]),
-    ImageCellModel(title: "Shared Album 5", count: 132, sharedWith: [sharedPerson1])
+    ImageCellModel(title: "Shared Album 4", count: 45110, sharedWith: [sharedPerson5, sharedPerson6, sharedPerson3]),
+    ImageCellModel(title: "Shared Album 5", count: 132, sharedWith: [sharedPerson6])
+]
+
+let place1 = Place(
+    latitude: 56.9496,
+    longitude: 24.1052,
+    zoomMeters: 2000
+)
+
+let peoplePetsImages = PeoplePetImageName(imageName: ["people1", "pet1", "people2", "people3"])
+
+let combinedContent: [ImageCellModel] = [
+    ImageCellModel(title: "People & Pets", count: 4567, peoplePetImageName: peoplePetsImages),
+    ImageCellModel(title: "Places", count: 7986, place: place1)
 ]

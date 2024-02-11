@@ -12,14 +12,14 @@ class ImageCell: UICollectionViewCell {
         return cellImage
     }()
     
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.text = "placeholder" // placeholder album name
         return label
     }()
         
-    private let countLabel: UILabel = {
+    let countLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
         label.textColor = .systemGray
