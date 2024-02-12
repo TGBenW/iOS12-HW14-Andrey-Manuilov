@@ -80,9 +80,9 @@ let sharedAlbumsContent: [ImageCellModel] = [
 ]
 
 let place1 = Place(
-    latitude: 56.9496,
-    longitude: 24.1052,
-    zoomMeters: 2000
+    latitude: 48.8567,
+    longitude: 2.3508,
+    zoomMeters: 200
 )
 
 let peoplePetsImages = PeoplePetImageName(imageName: ["people1", "pet1", "people2", "people3"])
