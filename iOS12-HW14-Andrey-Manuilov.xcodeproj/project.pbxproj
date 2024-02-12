@@ -25,6 +25,8 @@
 		B624941A2B7580E6009B9D9F /* SharedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494192B7580E6009B9D9F /* SharedCell.swift */; };
 		B624941C2B76E506009B9D9F /* PeoplePetsPlacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B624941B2B76E506009B9D9F /* PeoplePetsPlacesCell.swift */; };
 		B62494202B770098009B9D9F /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B624941F2B770098009B9D9F /* SectionModel.swift */; };
+		B62494252B797008009B9D9F /* RowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494242B797008009B9D9F /* RowModel.swift */; };
+		B62494272B797521009B9D9F /* RowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494262B797521009B9D9F /* RowCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		B62494192B7580E6009B9D9F /* SharedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCell.swift; sourceTree = "<group>"; };
 		B624941B2B76E506009B9D9F /* PeoplePetsPlacesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeoplePetsPlacesCell.swift; sourceTree = "<group>"; };
 		B624941F2B770098009B9D9F /* SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModel.swift; sourceTree = "<group>"; };
+		B62494242B797008009B9D9F /* RowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowModel.swift; sourceTree = "<group>"; };
+		B62494262B797521009B9D9F /* RowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 			children = (
 				B62494142B745C70009B9D9F /* MainModel.swift */,
 				B624941F2B770098009B9D9F /* SectionModel.swift */,
+				B62494242B797008009B9D9F /* RowModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				B62493D82B702522009B9D9F /* ImageCell.swift */,
 				B62494192B7580E6009B9D9F /* SharedCell.swift */,
 				B624941B2B76E506009B9D9F /* PeoplePetsPlacesCell.swift */,
+				B62494262B797521009B9D9F /* RowCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B62494272B797521009B9D9F /* RowCell.swift in Sources */,
 				B62493B42B700B59009B9D9F /* AlbumsViewController.swift in Sources */,
 				B62494202B770098009B9D9F /* SectionModel.swift in Sources */,
 				B624941A2B7580E6009B9D9F /* SharedCell.swift in Sources */,
@@ -259,6 +266,7 @@
 				B624940F2B73B49F009B9D9F /* LibraryViewController.swift in Sources */,
 				B62494152B745C70009B9D9F /* MainModel.swift in Sources */,
 				B624941C2B76E506009B9D9F /* PeoplePetsPlacesCell.swift in Sources */,
+				B62494252B797008009B9D9F /* RowModel.swift in Sources */,
 				B62494112B73B5E4009B9D9F /* ForYouViewController.swift in Sources */,
 				B62493B02B700B59009B9D9F /* AppDelegate.swift in Sources */,
 				B62493B22B700B59009B9D9F /* SceneDelegate.swift in Sources */,

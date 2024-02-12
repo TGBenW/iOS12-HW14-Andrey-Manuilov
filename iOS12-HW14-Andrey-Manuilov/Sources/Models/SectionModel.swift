@@ -1,12 +1,18 @@
 import Foundation
 
-struct AlbumSection { // section model
+enum AlbumSectionItem {
+    case imageCellModel(ImageCellModel)
+    case mediaType(MediaTypeModel)
+}
+
+struct AlbumSection {
     let title: String
-    let items: [ImageCellModel]
+    let items: [AlbumSectionItem]
 }
 
 let sections = [
-    AlbumSection(title: "My Albums", items: myAlbumsContent),
-    AlbumSection(title: "Shared Albums", items: sharedAlbumsContent),
-    AlbumSection(title: "People, Pets & Places", items: combinedContent)
+    AlbumSection(title: "My Albums", items: myAlbumsContent.map { .imageCellModel($0) }),
+    AlbumSection(title: "Shared Albums", items: sharedAlbumsContent.map { .imageCellModel($0) }),
+    AlbumSection(title: "People, Pets & Places", items: combinedContent.map { .imageCellModel($0) }),
+    AlbumSection(title: "Media Types", items: mediaTypesContent.map { .mediaType($0) })
 ]

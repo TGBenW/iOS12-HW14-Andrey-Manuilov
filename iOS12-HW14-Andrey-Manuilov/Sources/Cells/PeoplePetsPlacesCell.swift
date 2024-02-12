@@ -101,58 +101,49 @@ class PeoplePetsPlacesCell: ImageCell {
     }
     
     private func setupPeoplePetsLayout(with imageNames: [String]) {
-        guard imageNames.count == 4 else { return } // should be 4 items, not more
+        guard imageNames.count == 4 else { return }
 
         let screenWidth = UIScreen.main.bounds.width
-        let imageWidth = screenWidth * 0.43 - innerImagePadding
+        let stackWidth = screenWidth * 0.43
+        let imageWidth = (stackWidth - innerImagePadding) / 2
 
         let topStackView = UIStackView()
-        topStackView.axis = .horizontal
-        topStackView.distribution = .fillEqually
-        topStackView.alignment = .fill
-        topStackView.spacing = innerImagePadding / 2
-
         let bottomStackView = UIStackView()
-        bottomStackView.axis = .horizontal
-        bottomStackView.distribution = .fillEqually
-        bottomStackView.alignment = .fill
-        bottomStackView.spacing = innerImagePadding / 2
-
         let verticalStackView = UIStackView()
+
+        [topStackView, bottomStackView].forEach { stackView in
+            stackView.axis = .horizontal
+            stackView.distribution = .fillEqually
+            stackView.alignment = .fill
+            stackView.spacing = innerImagePadding
+        }
+
         verticalStackView.axis = .vertical
         verticalStackView.distribution = .fillEqually
         verticalStackView.alignment = .fill
-        verticalStackView.spacing = innerImagePadding / 2
+        verticalStackView.spacing = innerImagePadding
+
+        [topStackView, bottomStackView].forEach { stackView in
+            verticalStackView.addArrangedSubview(stackView)
+        }
 
         for (index, imageName) in imageNames.enumerated() {
             let imageView = UIImageView(image: UIImage(named: imageName))
             imageView.contentMode = .scaleAspectFill
             imageView.clipsToBounds = true
-            imageView.layer.cornerRadius = imageWidth / 4
+            imageView.layer.cornerRadius = imageWidth / 2
 
-            if index < 2 {
-                topStackView.addArrangedSubview(imageView)
-            } else {
-                bottomStackView.addArrangedSubview(imageView)
-            }
+            (index < 2 ? topStackView : bottomStackView).addArrangedSubview(imageView)
 
             imageView.snp.makeConstraints { make in
-                make.height.width.equalTo(imageWidth / 2)
+                make.width.height.equalTo(imageWidth)
             }
         }
 
-        verticalStackView.addArrangedSubview(topStackView)
-        verticalStackView.addArrangedSubview(bottomStackView)
-
         contentView.addSubview(verticalStackView)
-
         verticalStackView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.width.height.equalTo(imageWidth + innerImagePadding)
-        }
-        
-        bottomStackView.snp.makeConstraints { make in
-            make.top.equalTo(topStackView.snp.bottom).offset(innerImagePadding)
+            make.width.equalTo(stackWidth)
         }
 
         titleLabel.snp.remakeConstraints { make in
@@ -160,9 +151,10 @@ class PeoplePetsPlacesCell: ImageCell {
         }
 
         countLabel.snp.remakeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(4)
+            make.top.equalTo(titleLabel.snp.bottom)
         }
     }
+
 
 
     
