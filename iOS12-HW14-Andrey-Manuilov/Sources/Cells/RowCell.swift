@@ -3,27 +3,27 @@ import UIKit
 class MediaTypeCell: UICollectionViewCell {
     
     // MARK: - Outlets
-    private let iconImageView: UIImageView = {
+    let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         label.textColor = .systemBlue
         return label
     }()
     
-    private let countLabel: UILabel = {
+    let countLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .systemGray
         return label
     }()
     
-    private let chevronImageView: UIImageView = {
+    let chevronImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "chevron.right"))
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .systemGray4
@@ -37,7 +37,7 @@ class MediaTypeCell: UICollectionViewCell {
     }()
     
     // MARK: - Configuration
-    func configure(with model: MediaTypeModel) {
+    func configure(with model: RowCellModel) {
         iconImageView.image = UIImage(systemName: model.iconName) ?? UIImage(systemName: "exclamationmark.triangle.fill")
         
         titleLabel.text = model.title
@@ -93,7 +93,7 @@ class MediaTypeCell: UICollectionViewCell {
             make.left.equalTo(titleLabel.snp.left)
             make.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(6)
-            make.height.equalTo(1)
+            make.height.equalTo(0.2)
         }
     }
     

@@ -27,6 +27,7 @@
 		B62494202B770098009B9D9F /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B624941F2B770098009B9D9F /* SectionModel.swift */; };
 		B62494252B797008009B9D9F /* RowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494242B797008009B9D9F /* RowModel.swift */; };
 		B62494272B797521009B9D9F /* RowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494262B797521009B9D9F /* RowCell.swift */; };
+		B62494292B7A8469009B9D9F /* UtilitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494282B7A8469009B9D9F /* UtilitiesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		B624941F2B770098009B9D9F /* SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModel.swift; sourceTree = "<group>"; };
 		B62494242B797008009B9D9F /* RowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowModel.swift; sourceTree = "<group>"; };
 		B62494262B797521009B9D9F /* RowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowCell.swift; sourceTree = "<group>"; };
+		B62494282B7A8469009B9D9F /* UtilitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				B62494192B7580E6009B9D9F /* SharedCell.swift */,
 				B624941B2B76E506009B9D9F /* PeoplePetsPlacesCell.swift */,
 				B62494262B797521009B9D9F /* RowCell.swift */,
+				B62494282B7A8469009B9D9F /* UtilitiesCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				B62494252B797008009B9D9F /* RowModel.swift in Sources */,
 				B62494112B73B5E4009B9D9F /* ForYouViewController.swift in Sources */,
 				B62493B02B700B59009B9D9F /* AppDelegate.swift in Sources */,
+				B62494292B7A8469009B9D9F /* UtilitiesCell.swift in Sources */,
 				B62493B22B700B59009B9D9F /* SceneDelegate.swift in Sources */,
 				B62493D92B702522009B9D9F /* ImageCell.swift in Sources */,
 				B62494172B747717009B9D9F /* CustomHeader.swift in Sources */,
