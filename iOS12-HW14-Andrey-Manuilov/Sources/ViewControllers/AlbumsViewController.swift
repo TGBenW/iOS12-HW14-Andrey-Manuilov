@@ -25,6 +25,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDelegate {
         collectionView.register(SharedCell.self, forCellWithReuseIdentifier: "SharedCell")
         collectionView.register(PeoplePetsPlacesCell.self, forCellWithReuseIdentifier: "PlacesCell")
         collectionView.register(MediaTypeCell.self, forCellWithReuseIdentifier: "MediaTypeCell")
+        collectionView.register(UtilitiesCell.self, forCellWithReuseIdentifier: "UtilitiesCell")
         collectionView.register(CustomHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CustomHeaderView.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -62,7 +63,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDelegate {
             make.width.equalTo(scrollView.frameLayoutGuide.snp.width)
             make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset(-20)
 //            make.height.equalTo(scrollView.frameLayoutGuide).offset(-20)
-            make.height.equalTo(1800)
+            make.height.equalTo(1980)
             }
         
     }
@@ -81,15 +82,17 @@ extension AlbumsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            switch section {
-            case 0, 1, 2:
-                return sections[section].items.count
-            case 3:
-                return mediaTypesContent.count
-            default:
-                fatalError("Unexpected section")
-            }
+        switch section {
+        case 0, 1, 2:
+            return sections[section].items.count
+        case 3:
+            return mediaTypesContent.count
+        case 4:
+            return utilitiesContent.count
+        default:
+            fatalError("Unexpected section")
         }
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sectionItem = sections[indexPath.section].items[indexPath.item]
@@ -130,12 +133,23 @@ extension AlbumsViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? MediaTypeCell else {
                 fatalError("Cannot dequeue cell with identifier: \(cellIdentifier)")
             }
-            if case .mediaType(let model) = sectionItem {
+            if case .rowCellModel(let model) = sectionItem {
                 cell.configure(with: model)
-                
-                let isLastCell = indexPath.item == sections[indexPath.section].items.count - 1 // hide separator line for last cell
-                cell.setSeparatorHidden(isLastCell)
             }
+            let isLastCell = indexPath.item == sections[indexPath.section].items.count - 1 // set last cell separator line to hidden
+            cell.setSeparatorHidden(isLastCell)
+            return cell
+
+        case 4: // Utilities
+            let cellIdentifier = "UtilitiesCell"
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? UtilitiesCell else {
+                fatalError("Cannot dequeue cell with identifier: \(cellIdentifier)")
+            }
+            if case .rowCellModel(let model) = sectionItem {
+                cell.configure(with: model)
+            }
+            let isLastCell = indexPath.item == sections[indexPath.section].items.count - 1 // set last cell separator line to hidden
+            cell.setSeparatorHidden(isLastCell)
             return cell
 
         default:
@@ -143,19 +157,16 @@ extension AlbumsViewController: UICollectionViewDataSource {
         }
     }
 
-
-
-    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CustomHeaderView.identifier, for: indexPath) as? CustomHeaderView else {
-                fatalError("Could not dequeue CustomHeaderView")
-            }
-
-            let sectionTitle = sections[indexPath.section].title // set section header title from sections array
-            header.setTitle(sectionTitle)
-
-            return header
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CustomHeaderView.identifier, for: indexPath) as? CustomHeaderView else {
+            fatalError("Could not dequeue CustomHeaderView")
         }
+
+        let sectionTitle = sections[indexPath.section].title // set section header title from sections array
+        header.setTitle(sectionTitle)
+
+        return header
+    }
 }
 
 // MARK: EXTENSION
@@ -166,13 +177,15 @@ extension AlbumsViewController {
                 
             switch sectionIndex {
             case 0:
-                return self.createSection(using: layoutEnvironment, rows: 2, itemHeightMultiplier: 2.5, top: 0, leading: 20, bottom: 10, trailing: 0)
+                return self.createSection(using: layoutEnvironment, rows: 2, itemHeightMultiplier: 2.5, top: 0, leading: 20, bottom: 20, trailing: 0)
             case 1:
-                return self.createSection(using: layoutEnvironment, rows: 1, itemHeightMultiplier: 1.25, top: 0, leading: 20, bottom: 10, trailing: 0)
+                return self.createSection(using: layoutEnvironment, rows: 1, itemHeightMultiplier: 1.25, top: 0, leading: 20, bottom: 20, trailing: 0)
             case 2:
-                return self.createSection(using: layoutEnvironment, rows: 1, itemHeightMultiplier: 1.25, top: 0, leading: 20, bottom: 10, trailing: 0)
+                return self.createSection(using: layoutEnvironment, rows: 1, itemHeightMultiplier: 1.25, top: 0, leading: 20, bottom: 20, trailing: 0)
             case 3:
-                return self.createMediaTypeSection(using: layoutEnvironment, top: 0, leading: 20, bottom: 10, trailing: 0)
+                return self.createMediaTypeSection(using: layoutEnvironment, top: 0, leading: 20, bottom: 30, trailing: 0)
+            case 4:
+                return self.createMediaTypeSection(using: layoutEnvironment, top: 0, leading: 20, bottom: 0, trailing: 0)
             default:
                 fatalError("Unsupported section")
             }
