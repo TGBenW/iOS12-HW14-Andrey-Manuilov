@@ -38,7 +38,14 @@ class MediaTypeCell: UICollectionViewCell {
     
     // MARK: - Configuration
     func configure(with model: RowCellModel) {
-        iconImageView.image = UIImage(systemName: model.iconName) ?? UIImage(systemName: "exclamationmark.triangle.fill")
+        if let systemImage = UIImage(systemName: model.iconName) {
+            iconImageView.image = systemImage
+        } else if let assetImage = UIImage(named: model.iconName) {
+            iconImageView.image = assetImage
+            iconImageView.tintColor = .systemBlue
+        } else {
+            iconImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
+        }
         
         titleLabel.text = model.title
         

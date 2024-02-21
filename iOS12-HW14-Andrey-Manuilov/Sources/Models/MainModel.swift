@@ -52,37 +52,37 @@ struct ImageCellModel { // image cell model
 }
 
 let myAlbumsContent: [ImageCellModel] = [
-    ImageCellModel(title: "Album 1", count: 1120),
-    ImageCellModel(title: "Album 2", count: 3495, isFavorite: true),
-    ImageCellModel(title: "Album 3", count: 78),
-    ImageCellModel(title: "Album 4", count: 45110),
-    ImageCellModel(title: "Album 5", count: 132),
-    ImageCellModel(title: "Album 6", count: 1180),
-    ImageCellModel(title: "Album 7", count: 60),
-    ImageCellModel(title: "Album 8", count: 45),
-    ImageCellModel(title: "Album 9", count: 88),
-    ImageCellModel(title: "Album 10", count: 100)
+    ImageCellModel(title: "Recents", count: 25736, imageName: "recentImage"),
+    ImageCellModel(title: "Favourites", count: 192, imageName: "favouritesImage", isFavorite: true),
+    ImageCellModel(title: "Past posts", count: 36, imageName: "pastPostsImage"),
+    ImageCellModel(title: "Future posts", count: 21, imageName: "futurePostsImage"),
+    ImageCellModel(title: "Instagram", count: 98, imageName: "instagramImage"),
+    ImageCellModel(title: "Memes", count: 237, imageName: "memesImage"),
+    ImageCellModel(title: "Pinterest", count: 17, imageName: "pinterestImage"),
+    ImageCellModel(title: "Paris", count: 191, imageName: "parisImage"),
+    ImageCellModel(title: "Spain", count: 168, imageName: "spainImage"),
+    ImageCellModel(title: "Rammstein", count: 94, imageName: "rammsteinImage")
 ]
 
-let sharedPerson1 = SharedPerson(email: "person1@example.com", name: "Alice", surname: "Johnson", imageName: "aliceImage")
+let sharedPerson1 = SharedPerson(email: "person1@example.com", name: "Victoria", surname: "Gudovskaya", imageName: "vickyImage")
 let sharedPerson2 = SharedPerson(email: "person2@example.com", name: "Bob", surname: "Smith")
-let sharedPerson3 = SharedPerson(email: "person3@example.com", name: "Carol", surname: "Taylor", imageName: "carolImage")
+let sharedPerson3 = SharedPerson(email: "person3@example.com", name: "Denis", surname: "Gudovskiy", imageName: "denisImage")
 let sharedPerson4 = SharedPerson(email: "person4@example.com", name: "Dave", surname: "Brown")
-let sharedPerson5 = SharedPerson(email: "person5@example.com", name: "Eston", surname: "Diggory", imageName: "estonImage")
-let sharedPerson6 = SharedPerson(email: "person6@example.com", name: "Filly", surname: "Jennings", imageName: "fillyImage")
+let sharedPerson5 = SharedPerson(email: "person5@example.com", name: "George", surname: "Gudovskiy", imageName: "georgeImage")
+let sharedPerson6 = SharedPerson(email: "person6@example.com", name: "Eugene", surname: "Cvetkov", imageName: "eugeneImage")
 
 let sharedAlbumsContent: [ImageCellModel] = [
-    ImageCellModel(title: "Shared Album 1", count: 1120, sharedWith: [sharedPerson1, sharedPerson2]),
-    ImageCellModel(title: "Shared Album 2", count: 3495, sharedWith: [sharedPerson3]),
-    ImageCellModel(title: "Shared Album 3", count: 78, sharedWith: [sharedPerson4]),
-    ImageCellModel(title: "Shared Album 4", count: 45110, sharedWith: [sharedPerson5, sharedPerson6, sharedPerson3]),
-    ImageCellModel(title: "Shared Album 5", count: 132, sharedWith: [sharedPerson6])
+    ImageCellModel(title: "Weekends", count: 120, imageName: "weekendShared", sharedWith: [sharedPerson1, sharedPerson2]),
+    ImageCellModel(title: "Georgia trip", count: 495, imageName: "georgiaShared", sharedWith: [sharedPerson3]),
+    ImageCellModel(title: "Turkey trip", count: 78, imageName: "turkeyShared", sharedWith: [sharedPerson4]),
+    ImageCellModel(title: "Spain trip", count: 510, imageName: "spainShared", sharedWith: [sharedPerson5, sharedPerson6, sharedPerson3]),
+    ImageCellModel(title: "Copenhagen trip", count: 132, imageName: "copenhagenShared", sharedWith: [sharedPerson6])
 ]
 
 let place1 = Place(
-    latitude: 48.8567,
-    longitude: 2.3508,
-    zoomMeters: 200
+    latitude: 48.8584,
+    longitude: 2.2940,
+    zoomMeters: 300
 )
 
 let peoplePetsImages = PeoplePetImageName(imageName: ["people1", "pet1", "people2", "people3"])

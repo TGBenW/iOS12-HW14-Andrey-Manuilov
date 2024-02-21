@@ -15,24 +15,24 @@ struct RowCellModel {
 }
 
 let mediaTypesContent: [RowCellModel] = [
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 1),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 2),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 3),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 4),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 5555),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 6),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 7),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 8),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 9),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 1010),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 11),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 12),
-    RowCellModel(iconName: "photo.artframe", title: "Photos", count: 13),
+    RowCellModel(iconName: "video", title: "Videos", count: 2431),
+    RowCellModel(iconName: "person.crop.square", title: "Selfies", count: 451),
+    RowCellModel(iconName: "livephoto", title: "Live Photos", count: 14098),
+    RowCellModel(iconName: "f.cursive.circle", title: "Portrait", count: 88),
+    RowCellModel(iconName: "long-exposure", title: "Long Exposure", count: 10),
+    RowCellModel(iconName: "pano", title: "Panoramas", count: 9),
+    RowCellModel(iconName: "timelapse", title: "Time-lapse", count: 15),
+    RowCellModel(iconName: "slowmo", title: "Slo-mo", count: 81),
+    RowCellModel(iconName: "cinematic", title: "Cinematic", count: 37),
+    RowCellModel(iconName: "camera.viewfinder", title: "Screenshots", count: 3040),
+    RowCellModel(iconName: "record.circle", title: "Screen Recordings", count: 67),
+    RowCellModel(iconName: "animated", title: "Animated", count: 5),
+    RowCellModel(iconName: "r.square.on.square", title: "RAW", count: 1)
 ]
 
 let utilitiesContent: [RowCellModel] = [
-    RowCellModel(iconName: "star", title: "Videos", count: 1111),
-    RowCellModel(iconName: "star", title: "Videos", count: 2222),
-    RowCellModel(iconName: "star", title: "Videos", count: 3333),
-    RowCellModel(iconName: "star", title: "Videos", count: 444, locked: true) // locked one
+    RowCellModel(iconName: "square.and.arrow.down", title: "Imports", count: 850),
+    RowCellModel(iconName: "square.on.square", title: "Duplicates", count: 58),
+    RowCellModel(iconName: "eye.slash", title: "Hidden", count: 12, locked: true), // locked one
+    RowCellModel(iconName: "trash", title: "Recently Deleted", count: 102, locked: true) // locked one
 ]
