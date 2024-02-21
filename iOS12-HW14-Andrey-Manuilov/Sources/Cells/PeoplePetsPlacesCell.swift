@@ -36,7 +36,7 @@ class PeoplePetsPlacesCell: ImageCell {
     
     private let placeImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "placeImage")
         imageView.clipsToBounds = true
         return imageView

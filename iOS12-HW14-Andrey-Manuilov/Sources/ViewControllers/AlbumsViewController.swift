@@ -63,9 +63,8 @@ class AlbumsViewController: UIViewController, UICollectionViewDelegate {
             make.width.equalTo(scrollView.frameLayoutGuide.snp.width)
             make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset(-20)
 //            make.height.equalTo(scrollView.frameLayoutGuide).offset(-20)
-            make.height.equalTo(1980)
-            }
-        
+            make.height.equalTo(collectionView.snp.width).multipliedBy(5.1) // UPDATED
+        }
     }
     
     // MARK: - Actions
