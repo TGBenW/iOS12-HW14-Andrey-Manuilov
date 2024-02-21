@@ -13,14 +13,14 @@ class AlbumsViewController: UIViewController, UICollectionViewDelegate {
     
     private lazy var addButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        button.tintColor = .systemBlue
+        button.tintColor = StyleGuide.Colors.tint
         return button
     }()
     
     private lazy var collectionView: UICollectionView = {
         let layout = createCompositionalLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = StyleGuide.Colors.background
         collectionView.register(ImageCell.self, forCellWithReuseIdentifier: "ImageCell")
         collectionView.register(SharedCell.self, forCellWithReuseIdentifier: "SharedCell")
         collectionView.register(PeoplePetsPlacesCell.self, forCellWithReuseIdentifier: "PlacesCell")
@@ -37,7 +37,7 @@ class AlbumsViewController: UIViewController, UICollectionViewDelegate {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = StyleGuide.Colors.background
         title = "Albums"
         
         setupHierarchy()
@@ -62,7 +62,6 @@ class AlbumsViewController: UIViewController, UICollectionViewDelegate {
             make.left.right.equalTo(scrollView.frameLayoutGuide)
             make.width.equalTo(scrollView.frameLayoutGuide.snp.width)
             make.bottom.equalTo(scrollView.contentLayoutGuide.snp.bottom).offset(-20)
-//            make.height.equalTo(scrollView.frameLayoutGuide).offset(-20)
             make.height.equalTo(collectionView.snp.width).multipliedBy(5.1) // UPDATED
         }
     }

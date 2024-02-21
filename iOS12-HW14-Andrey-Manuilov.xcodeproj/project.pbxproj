@@ -28,6 +28,7 @@
 		B62494252B797008009B9D9F /* RowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494242B797008009B9D9F /* RowModel.swift */; };
 		B62494272B797521009B9D9F /* RowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494262B797521009B9D9F /* RowCell.swift */; };
 		B62494292B7A8469009B9D9F /* UtilitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62494282B7A8469009B9D9F /* UtilitiesCell.swift */; };
+		B624942C2B862C13009B9D9F /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B624942B2B862C13009B9D9F /* StyleGuide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		B62494242B797008009B9D9F /* RowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowModel.swift; sourceTree = "<group>"; };
 		B62494262B797521009B9D9F /* RowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowCell.swift; sourceTree = "<group>"; };
 		B62494282B7A8469009B9D9F /* UtilitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesCell.swift; sourceTree = "<group>"; };
+		B624942B2B862C13009B9D9F /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		B62493CA2B701266009B9D9F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B624942A2B8629F7009B9D9F /* Utilities */,
 				B62494182B750FF4009B9D9F /* Cells */,
 				B62493CF2B70189D009B9D9F /* Models */,
 				B62493CE2B701894009B9D9F /* Views */,
@@ -144,7 +147,10 @@
 		B62493CD2B701885009B9D9F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B624940E2B73B49F009B9D9F /* LibraryViewController.swift */,
+				B62494102B73B5E4009B9D9F /* ForYouViewController.swift */,
 				B62493B32B700B59009B9D9F /* AlbumsViewController.swift */,
+				B62494122B73B620009B9D9F /* SearchViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -152,9 +158,6 @@
 		B62493CE2B701894009B9D9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B624940E2B73B49F009B9D9F /* LibraryViewController.swift */,
-				B62494102B73B5E4009B9D9F /* ForYouViewController.swift */,
-				B62494122B73B620009B9D9F /* SearchViewController.swift */,
 				B62494162B747717009B9D9F /* CustomHeader.swift */,
 			);
 			path = Views;
@@ -180,6 +183,14 @@
 				B62494282B7A8469009B9D9F /* UtilitiesCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		B624942A2B8629F7009B9D9F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B624942B2B862C13009B9D9F /* StyleGuide.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +282,7 @@
 				B624941C2B76E506009B9D9F /* PeoplePetsPlacesCell.swift in Sources */,
 				B62494252B797008009B9D9F /* RowModel.swift in Sources */,
 				B62494112B73B5E4009B9D9F /* ForYouViewController.swift in Sources */,
+				B624942C2B862C13009B9D9F /* StyleGuide.swift in Sources */,
 				B62493B02B700B59009B9D9F /* AppDelegate.swift in Sources */,
 				B62494292B7A8469009B9D9F /* UtilitiesCell.swift in Sources */,
 				B62493B22B700B59009B9D9F /* SceneDelegate.swift in Sources */,

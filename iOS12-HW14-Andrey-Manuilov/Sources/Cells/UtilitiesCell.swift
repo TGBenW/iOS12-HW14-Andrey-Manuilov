@@ -7,7 +7,7 @@ class UtilitiesCell: MediaTypeCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.isHidden = true
-        imageView.tintColor = .systemGray
+        imageView.tintColor = StyleGuide.Colors.imageTintGray
         return imageView
     }()
     
@@ -52,5 +52,13 @@ class UtilitiesCell: MediaTypeCell {
             make.right.equalTo(chevronImageView.snp.left).offset(-8) // place lock to the left of the chevron
             make.size.equalTo(CGSize(width: 16, height: 16)) // size for the lock icon
         }
+    }
+    
+    // MARK: - Prepare for Reuse
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        lockImageView.isHidden = true
+        countLabel.isHidden = false
     }
 }
