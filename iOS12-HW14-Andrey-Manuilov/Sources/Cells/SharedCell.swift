@@ -32,9 +32,9 @@ class SharedCell: ImageCell {
     // MARK: - Setup
     private func createSharedIndicatorView(for sharedPerson: SharedPerson, at index: Int) -> UIView {
         let view = UIView()
-        view.backgroundColor = .gray
+        view.backgroundColor = StyleGuide.Colors.gray
         view.layer.cornerRadius = CGFloat(SharedCell.sharedPersonRadius)
-        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.borderColor = StyleGuide.Colors.borderWhite
         view.layer.borderWidth = 1
         imageView.addSubview(view)
         
@@ -48,7 +48,7 @@ class SharedCell: ImageCell {
         
         let initialsLabel = UILabel()
         initialsLabel.textAlignment = .center
-        initialsLabel.textColor = .white
+        initialsLabel.textColor = StyleGuide.Colors.white
         initialsLabel.font = UIFont.boldSystemFont(ofSize: 12)
         initialsLabel.isHidden = sharedPerson.imageName != nil
         
@@ -77,5 +77,13 @@ class SharedCell: ImageCell {
         }
         
         return view
+    }
+    
+    // MARK: - Prepare for Reuse
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        sharedIndicators.forEach { $0.removeFromSuperview() }
+        sharedIndicators.removeAll()
     }
 }

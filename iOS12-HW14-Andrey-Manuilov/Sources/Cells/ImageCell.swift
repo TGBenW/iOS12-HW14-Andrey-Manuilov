@@ -22,7 +22,7 @@ class ImageCell: UICollectionViewCell {
     let countLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
-        label.textColor = .systemGray
+        label.textColor = StyleGuide.Colors.textGray
         label.text = "11 111" // placeholder count
         return label
     }()
@@ -31,7 +31,7 @@ class ImageCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(systemName: "heart.fill")
-        imageView.tintColor = .white
+        imageView.tintColor = StyleGuide.Colors.white
         return imageView
     }()
     
@@ -86,6 +86,16 @@ class ImageCell: UICollectionViewCell {
         countLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom)
         }
+    }
+    
+    // MARK: - Prepare for Reuse
+    override func prepareForReuse() { // reset the cell to default values
+        super.prepareForReuse()
+            
+        imageView.image = UIImage(named: "placeholder_img")
+        titleLabel.text = "placeholder"
+        countLabel.text = "11 111"
+        heartIconView.isHidden = true
     }
 }
 

@@ -12,27 +12,27 @@ class MediaTypeCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        label.textColor = .systemBlue
+        label.textColor = StyleGuide.Colors.tint
         return label
     }()
     
     let countLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        label.textColor = .systemGray
+        label.textColor = StyleGuide.Colors.textGray
         return label
     }()
     
     let chevronImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "chevron.right"))
         imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .systemGray4
+        imageView.tintColor = StyleGuide.Colors.tintGray4
         return imageView
     }()
     
     private let separatorLine: UIView = {
         let line = UIView()
-        line.backgroundColor = .systemGray5
+        line.backgroundColor = StyleGuide.Colors.backgroundGray5
         return line
     }()
     
@@ -42,7 +42,7 @@ class MediaTypeCell: UICollectionViewCell {
             iconImageView.image = systemImage
         } else if let assetImage = UIImage(named: model.iconName) {
             iconImageView.image = assetImage
-            iconImageView.tintColor = .systemBlue
+            iconImageView.tintColor = StyleGuide.Colors.iconTint
         } else {
             iconImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
         }
@@ -107,5 +107,15 @@ class MediaTypeCell: UICollectionViewCell {
     // MARK: - Actions
     func setSeparatorHidden(_ hidden: Bool) {
         separatorLine.isHidden = hidden
+    }
+    
+    // MARK: - Prepare for Reuse
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        iconImageView.image = nil
+        titleLabel.text = ""
+        countLabel.text = ""
+        separatorLine.isHidden = false
     }
 }

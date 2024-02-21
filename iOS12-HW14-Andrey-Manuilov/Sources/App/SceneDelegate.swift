@@ -7,50 +7,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let libraryViewController = LibraryViewController() // initialize view controllers
-        let forYouViewController = ForYouViewController()
-        let albumsViewController = AlbumsViewController()
-        let searchViewController = SearchViewController()
+        let libraryViewController = setupViewController(LibraryViewController(), title: "Library", systemImageName: "photo.on.rectangle.angled")
+        let forYouViewController = setupViewController(ForYouViewController(), title: "For You", systemImageName: "heart.text.square")
+        let albumsViewController = setupViewController(AlbumsViewController(), title: "Albums", systemImageName: "rectangle.stack")
+        let searchViewController = setupViewController(SearchViewController(), title: "Search", systemImageName: "magnifyingglass")
         
-        let libraryNavViewController = UINavigationController(rootViewController: libraryViewController) // wrap each in navigation controller
-        let forYouNavViewController = UINavigationController(rootViewController: forYouViewController)
-        let albumsNavViewController = UINavigationController(rootViewController: albumsViewController)
-        let searchNavViewController = UINavigationController(rootViewController: searchViewController)
-        
-        [libraryNavViewController, forYouNavViewController, albumsNavViewController, searchNavViewController].forEach { // large titles
-            $0.navigationBar.prefersLargeTitles = true
-        }
-        
-        let tabBarViewController = UITabBarController() // tab bar controller
-        tabBarViewController.setViewControllers([libraryNavViewController, forYouNavViewController, albumsNavViewController, searchNavViewController], animated: true)
+        let tabBarViewController = UITabBarController()
+        tabBarViewController.setViewControllers([libraryViewController, forYouViewController, albumsViewController, searchViewController], animated: true)
         tabBarViewController.selectedIndex = 2 // albums tab opens by default
         
-        libraryNavViewController.tabBarItem = UITabBarItem(
-            title: "Library",
-            image: UIImage(systemName: "photo.on.rectangle.angled"),
-            selectedImage: UIImage(systemName: "photo.on.rectangle.angled.fill")
-        )
-
-        forYouNavViewController.tabBarItem = UITabBarItem(
-            title: "For You",
-            image: UIImage(systemName: "heart.text.square"),
-            selectedImage: UIImage(systemName: "heart.text.square.fill")
-        )
-
-        albumsNavViewController.tabBarItem = UITabBarItem(
-            title: "Albums",
-            image: UIImage(systemName: "rectangle.stack"),
-            selectedImage: UIImage(systemName: "rectangle.stack.fill")
-        )
-
-        searchNavViewController.tabBarItem = UITabBarItem(
-            title: "Search",
-            image: UIImage(systemName: "magnifyingglass"),
-            selectedImage: UIImage(systemName: "magnifyingglass")
-        )
-        
-        window = UIWindow(windowScene: windowScene) // tab bar controller -> window root view controller
+        window = UIWindow(windowScene: windowScene)
         window?.rootViewController = tabBarViewController
         window?.makeKeyAndVisible()
+    }
+    
+    private func setupViewController(_ viewController: UIViewController, title: String, systemImageName: String) -> UINavigationController {
+        viewController.navigationItem.largeTitleDisplayMode = .always
+        
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.navigationBar.prefersLargeTitles = true
+        
+        let tabBarItem = UITabBarItem(title: title, image: UIImage(systemName: systemImageName), selectedImage: UIImage(systemName: "\(systemImageName).fill"))
+        viewController.tabBarItem = tabBarItem
+        
+        return navController
     }
 }

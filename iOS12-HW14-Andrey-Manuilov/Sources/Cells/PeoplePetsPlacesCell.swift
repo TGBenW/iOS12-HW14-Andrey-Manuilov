@@ -30,7 +30,7 @@ class PeoplePetsPlacesCell: ImageCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "placePointer") // image, not SF Symbol because of side ratio
-        imageView.tintColor = .white
+        imageView.tintColor = StyleGuide.Colors.white
         return imageView
     }()
     
@@ -183,4 +183,13 @@ class PeoplePetsPlacesCell: ImageCell {
     private func configurePlaceImageView() {
         placeImageView.layer.cornerRadius = innerImagePadding
     }
+    
+    // MARK: - Prepare for Reuse
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        mapView.isHidden = true
+        peoplePetsImageView.isHidden = true
+    }
+
 }
